@@ -3,7 +3,7 @@ import subprocess
 from pathlib import Path
 from typing import Optional
 
-from pydantic import BaseSettings, SecretStr
+from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO)
 settings = Settings()
 
 logging.info("Running script")
-logging.info(subprocess(["ls"], capture_output=True))
+logging.info(subprocess.run(["ls"], capture_output=True))
 content = subprocess.run(
     ["python", "-m", settings.input_script_file.resolve()],
     capture_output=True,
