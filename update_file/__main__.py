@@ -18,8 +18,11 @@ logging.basicConfig(level=logging.INFO)
 settings = Settings()
 
 logging.info("Running script")
+logging.info(subprocess(["ls"], capture_output=True))
 content = subprocess.run(
-    ["python", "-m", settings.input_script_file], capture_output=True, check=True,
+    ["python", "-m", settings.input_script_file.resolve()],
+    capture_output=True,
+    check=True,
 )
 logging.info("Writting content")
 with open(settings.input_update_file, "w") as f:
