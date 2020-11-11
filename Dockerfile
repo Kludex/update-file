@@ -8,4 +8,4 @@ COPY ./update_file /app/update_file
 
 ENV PYTHONPATH=/app
 
-CMD ["python", "-m", "update-file"]
+CMD ["python", "-m", "update_file"]
