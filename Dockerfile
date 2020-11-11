@@ -4,7 +4,7 @@ COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install -r /app/requirements.txt
 
-COPY ./latest_changes /app/latest_changes
+COPY ./update_file /app/update_file
 
 ENV PYTHONPATH=/app
 
