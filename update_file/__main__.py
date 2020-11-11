@@ -2,6 +2,7 @@ import logging
 import subprocess
 import sys
 from pathlib import Path
+from subprocess import CalledProcessError
 
 from pydantic import BaseSettings
 
@@ -33,9 +34,12 @@ logging.info("Setting up GitHub Actions git user")
 subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
 subprocess.run(["git", "config", "user.email", "github-actions@github.com"], check=True)
 subprocess.run(["git", "add", str(settings.input_update_file)], check=True)
-subprocess.run(
-    ["git", "commit", "-m", f"📝 Update {settings.input_update_file}"], check=True
-)
+try:
+    subprocess.run(
+        ["git", "commit", "-m", f"📝 Update {settings.input_update_file}"], check=True
+    )
+except CalledProcessError:
+    logging.info("File already up-to-date")
 logging.info(f"Pushing changes: {settings.input_update_file}")
 subprocess.run(["git", "push", "origin", "HEAD:main"], check=True)
 logging.info("Finished")
