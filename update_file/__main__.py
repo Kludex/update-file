@@ -10,6 +10,7 @@ from pydantic import BaseSettings
 class Settings(BaseSettings):
     input_script_file: Path = Path("update.py")
     input_update_file: Path = Path("README.md")
+    input_requirements: Path = Path("requirements.txt")
 
 
 logging.basicConfig(level=logging.INFO)
@@ -23,6 +24,7 @@ if not settings.input_update_file.is_file():
 
 logging.info("Running script")
 logging.info(subprocess.run(["ls"], capture_output=True))
+subprocess.run(["pip", "install", "-r", settings.input_requirements])
 content = subprocess.run(
     ["python", str(settings.input_script_file)], capture_output=True, check=True,
 ).stdout.decode("utf-8")

@@ -8,6 +8,10 @@ inputs:
   update_file:
     description: The file to add the content
     required: true
+  requirements:
+    description: Package requirements
+    default: requirements.txt
+    required: false
 runs:
   using: docker
   image: Dockerfile
