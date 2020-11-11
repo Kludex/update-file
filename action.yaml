@@ -1,0 +1,17 @@
+name: Marcelo Trylesinski Readme Update
+author: Marcelo Trylesinski <marcelotryle@gmail.com>
+description: Update the README on schedule with your custom script
+inputs:
+  script_file:
+    description: The script that gives you the daily data
+    required: true
+  update_file:
+    description: The file to add the latest changes
+    default: README.md
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: list
+  color: purple

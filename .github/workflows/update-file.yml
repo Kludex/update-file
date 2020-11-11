@@ -1,0 +1,15 @@
+name: Update File
+
+on:
+  push:
+  schedule:
+  - cron: "0 0 * * *"
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kludex/update-file@main
+        with:
+          script_file: update_script.py
+          update_file: README.md
