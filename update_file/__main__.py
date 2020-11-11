@@ -27,7 +27,7 @@ if not settings.input_update_file.is_file():
 logging.info("Running script")
 logging.info(subprocess.run(["ls"], capture_output=True))
 content = subprocess.run(
-    ["python", "-m", str(settings.input_script_file)], capture_output=True, check=True,
+    ["python", str(settings.input_script_file)], capture_output=True, check=True,
 )
 logging.info("Writting content")
 with open(settings.input_update_file, "w") as f:
