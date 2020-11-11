@@ -27,7 +27,7 @@ content = subprocess.run(
 ).stdout.decode("utf-8")
 logging.info("Writting content")
 with open(settings.input_update_file, "w") as f:
-    f.write(content)
+    f.write(content[:-1])
 
 logging.info("Setting up GitHub Actions git user")
 subprocess.run(["git", "config", "user.name", "github-actions"], check=True)
