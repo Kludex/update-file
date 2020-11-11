@@ -28,7 +28,7 @@ logging.info("Running script")
 logging.info(subprocess.run(["ls"], capture_output=True))
 content = subprocess.run(
     ["python", str(settings.input_script_file)], capture_output=True, check=True,
-)
+).stdout.decode("utf-8")
 logging.info("Writting content")
 with open(settings.input_update_file, "w") as f:
     f.write(content)
