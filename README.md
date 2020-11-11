@@ -37,3 +37,4 @@ And it will run on `push` and on `schedule` (`cron: "0 0 * * *"`), so each day a
 ## License
 
 This project is licensed under the terms of the MIT license.
+
