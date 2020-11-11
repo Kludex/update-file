@@ -1,6 +1,6 @@
 # Update File
 
-Automatically update a file based a script.
+Automatically update a file based on a script.
 
 Currently we only support Python scripts. If asked, support for other languages can be added.
 
