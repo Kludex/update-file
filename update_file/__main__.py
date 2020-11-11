@@ -2,15 +2,11 @@ import logging
 import subprocess
 import sys
 from pathlib import Path
-from typing import Optional
 
 from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    github_repository: str
-    github_event_path: Path
-    github_event_name: Optional[str] = None
     input_script_file: Path = Path("update.py")
     input_update_file: Path = Path("README.md")
 
