@@ -1,5 +1,6 @@
 import logging
 import subprocess
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -16,13 +17,17 @@ class Settings(BaseSettings):
 
 logging.basicConfig(level=logging.INFO)
 settings = Settings()
+if not settings.input_script_file.is_file():
+    logging.error(f"Script file doesn't exist: {settings.input_script_file}")
+    sys.exit(1)
+if not settings.input_update_file.is_file():
+    logging.error(f"Update file doesn't exist: {settings.input_update_file}")
+    sys.exit(1)
 
 logging.info("Running script")
 logging.info(subprocess.run(["ls"], capture_output=True))
 content = subprocess.run(
-    ["python", "-m", settings.input_script_file.resolve()],
-    capture_output=True,
-    check=True,
+    ["python", "-m", str(settings.input_script_file)], capture_output=True, check=True,
 )
 logging.info("Writting content")
 with open(settings.input_update_file, "w") as f:
