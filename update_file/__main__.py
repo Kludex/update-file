@@ -44,5 +44,6 @@ try:
 except CalledProcessError:
     logging.info("File already up-to-date")
 logging.info(f"Pushing changes: {settings.input_update_file}")
+logging.info(f"Current branch: {settings.github_ref}")
 subprocess.run(["git", "push", "origin", settings.github_ref], check=True)
 logging.info("Finished")
