@@ -8,6 +8,7 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
+    github_ref = str
     input_script_file: Path = Path("update.py")
     input_update_file: Path = Path("README.md")
     input_requirements: Path = Path("requirements.txt")
@@ -43,5 +44,5 @@ try:
 except CalledProcessError:
     logging.info("File already up-to-date")
 logging.info(f"Pushing changes: {settings.input_update_file}")
-subprocess.run(["git", "push"], check=True)
+subprocess.run(["git", "push", "origin", settings.github_ref], check=True)
 logging.info("Finished")
