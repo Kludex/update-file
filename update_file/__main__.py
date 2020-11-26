@@ -8,7 +8,7 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    github_ref = str
+    github_ref: str
     input_script_file: Path = Path("update.py")
     input_update_file: Path = Path("README.md")
     input_requirements: Path = Path("requirements.txt")
